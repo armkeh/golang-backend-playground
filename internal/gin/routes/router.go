@@ -6,13 +6,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Simple ping responder
+func pingHandler(c *gin.Context) () {
+	c.String(http.StatusOK, "pong")
+}
+
 func Setup() *gin.Engine {
 	r := gin.Default()
 
-	// Ping test
-	r.GET("/ping", func(c *gin.Context) {
-		c.String(http.StatusOK, "pong")
-	})
+	r.GET("/ping", pingHandler)
 
 	return r
 }
+
